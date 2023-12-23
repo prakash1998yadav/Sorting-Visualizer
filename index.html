@@ -10,7 +10,6 @@
 
 <body>
 	<div class="header">
-		<h1>HamDola Visualizer</h1>
 		<div class="vars">
 			<div class="range">
 				<div class="slide"><label for="bars">ِArray Size</label> : <input id="bars" type="range" name="bars"
@@ -21,6 +20,7 @@
 					<span id="d"></span></div>
 			</div>
 			<div class="sorts">
+				
 				<input type="button" onclick="SelectionSort()" value="Selection Sort">
 				<input type="button" onclick="BubbleSort()" value="Bubble Sort">
 				<input type="button" onclick="InsertionSort()" value="Insertion Sort">
@@ -29,6 +29,9 @@
 				<input type="button" onclick="HeapSort()" value="Heap Sort"><br><br>
 			</div>
 			<button onclick="reset()">Generate New Array</button>
+			<button onclick="pause()">pause</button>
+			<button onclick="executeNextStep()">next</button>
+			<button onclick="executePreviousStep()">resume</button>
 		</div>
 	</div>
 	<div id="container">

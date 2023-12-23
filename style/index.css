@@ -13,6 +13,11 @@
   	width: -moz-max-content;   
  	width: -webkit-max-content;
 	height: 60%;
+	border: 0.05vw solid black;
+	align-items:  flex-end;
+
+	
+
 }
 
 #b{
@@ -28,6 +33,9 @@
 }
 #bars, #delay{
 	vertical-align: middle;
+
+
+
 }
 
 .header{
@@ -58,9 +66,9 @@ h1{
 }
 .bar{
 	border: 0.05vw solid black;
-	width:0.6vw;
+	width:0.9vw;
 	margin:0.1vw;
-	background-color: #fd0081;
+	background-color: blue;
 }
 .sorts{
 	display: flex;
