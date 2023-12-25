@@ -95,7 +95,7 @@ function executeNextStep() {
 function executePreviousStep() {
     if (currentStep > 0) {
         currentStep--;
-        resetBars(); // You need to implement a function to reset the bars to the state before the current step.
+        resetBars(); // Assuming you have a function to reset the bars to the state before the current step.
         for (let i = 0; i < currentStep; i++) {
             steps[i]();
         }
@@ -372,12 +372,57 @@ async function QuickSort() {
 	let delay = Disable_The_Input();
 	await quickSort(0, bars.length - 1, delay);
 	Finished_Sorting();
+}   
+
+    // 6
+// SHELL SORT
+
+// ShellSort(): Implementation of shell sort algorithm. O(n^2)
+async function ShellSort() {
+    let delay = Disable_The_Input();
+    let n = bars.length;
+
+    for (let gap = Math.floor(n / 2); gap > 0; gap = Math.floor(gap / 2)) {
+        for (let i = gap; i < n; i++) {
+            let temp = bars[i];
+            let j = i;
+
+            let curr_id = bars[j].split('id="')[1].split('"')[0];
+            document.getElementById(curr_id).style.backgroundColor = selected;
+
+            while (j >= gap && parseInt(bars[j - gap].split(/[:%]/)[1]) > parseInt(temp.split(/[:%]/)[1])) {
+                let prev_id = bars[j - gap].split('id="')[1].split('"')[0];
+                document.getElementById(prev_id).style.backgroundColor = chng;
+
+                bars[j] = bars[j - gap];
+                j -= gap;
+
+                await SleepWithPause(delay / 3.0);
+                container.innerHTML = bars.join('');
+
+                let sound = MapRange(document.getElementById(prev_id).style.height.split('%')[0], 2, 100, 500, 1000);
+                beep(100, sound, delay);
+
+                document.getElementById(prev_id).style.backgroundColor = selected;
+                await SleepWithPause(delay / 3.0);
+            }
+
+            bars[j] = temp;
+            container.innerHTML = bars.join('');
+            document.getElementById(curr_id).style.backgroundColor = selected;
+
+            await SleepWithPause(delay / 3.0);
+        }
+    }
+
+    Finished_Sorting();
 }
 
 
 
 
-// 6
+
+// 7
 // HEAP SORT
 // Heapfiy(): Creates a max heap.
 async function Heapfiy(n, i, d) {
